@@ -143,7 +143,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.powermock/powermock-mockito-release-full
     testImplementation("org.powermock:powermock-mockito-release-full:1.6.4")
     // https://mvnrepository.com/artifact/org.mockito.kotlin/mockito-kotlin
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
     // https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4
     testImplementation("org.powermock:powermock-module-junit4:2.0.9")
 
