@@ -1,10 +1,14 @@
 package otus
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import dev.shreyaspatil.foodium.FoodiumApp
 import dev.shreyaspatil.foodium.data.repository.Resource
 import dev.shreyaspatil.foodium.model.Post
 import dev.shreyaspatil.foodium.model.State
 import dev.shreyaspatil.foodium.ui.main.adapter.PostListAdapter
 import dev.shreyaspatil.foodium.utils.isNight
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -52,9 +56,20 @@ class TestClass() {
         Mockito.`when`(calendar.get(Calendar.HOUR_OF_DAY)).thenReturn(6)
         assert(isNight())
     }
+
+    @Test
     fun isNightFalse() {
         val calendar: Calendar = Mockito.mock(Calendar::class.java)
         Mockito.`when`(calendar.get(Calendar.HOUR_OF_DAY)).thenReturn(7)
-        assert(isNight())
+        assert(!isNight())
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun testUseInNight() {
+        val calendar: Calendar = Mockito.mock(Calendar::class.java)
+        Mockito.`when`(calendar.get(Calendar.HOUR_OF_DAY)).thenReturn(6)
+        FoodiumApp().onCreate()
+        assert(AppCompatDelegate.getDefaultNightMode() == MODE_NIGHT_YES)
     }
 }
